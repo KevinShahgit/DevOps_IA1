@@ -1,0 +1,254 @@
+/* Kept for bhuvnesh */
+/* setup */
+* {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    transition:all 60ms ease;
+  }
+  
+  /* variables */
+  $menuHeight      : 3rem;
+  $subHeight       : 2rem;
+  $subwidth        : 180px;
+  $subPadding      : 0.35rem 0.25rem 0.25rem;
+  $suboffset       : 0.35rem; // offset the top padding
+  
+  
+  @mixin cf() {
+    *zoom: 1;
+      &:before, &:after {
+          content: " ";
+          display: table;
+      }
+      &:after { 
+       clear: both;
+      }
+  }
+  
+  %blockRel {
+    display:block;
+    position: relative;
+  }
+  
+  %inBlockRel {
+    display:inline-block;
+    position: relative;
+  }
+  
+  
+  /* 
+  Essential Styles 
+  - - - - - - - - - - - -
+  I like to keep the specificity low by using tags to make it easy to override the basic strucuture, if needed.  Adding an id to the root element would offer more isolation.
+  
+  */
+  
+  
+  .menu {
+    postion:relative;
+    list-style:none;
+    float:left;
+    padding:0;
+    margin:0;
+    
+    
+    li {
+      @extend %inBlockRel;
+      float: left;
+    }
+    a {
+        @extend %inBlockRel;
+        height:$menuHeight;
+        line-height:$menuHeight;
+        width:100%;
+      }
+    
+    ul { // drop down menu
+      display: none;
+      position: absolute;
+      top: 100%;
+      left : 0px;
+      width: $subwidth;
+      min-width:$subwidth;
+      padding: 0;
+      margin:0;
+      
+      ul { // nested drops
+        top: (0 - $suboffset); 
+        left: 100%;
+      }
+      
+      li {
+        @extend %blockRel;
+        float: left;
+        width:100%;
+      }
+      
+      a {
+        @extend %blockRel;
+        height: $subHeight;
+        line-height: $subHeight;
+      }
+      
+    }
+    
+    li:hover > .sub-menu {
+        display: block;
+      }
+    
+    @include cf();
+  } 
+  
+  
+  $navbg : #D2D7D3;
+  $topcolor : #6C7A89;
+  $topactivecolor : #F2784B;
+  $subbg : #34495e;
+  $sublink : #F2F1EF;
+  $sublinkactivebg : #2C3E50;
+  $nestedbg : #2C3E50;
+  $currentcolor : $topcolor;
+    
+  /* THEME  */
+  .navbar {
+    background: $navbg;
+    @include cf();
+  }
+  
+  .menu {
+    width: 100%;
+    
+    li {
+      border-right:1px dotted #ECECEC;
+      width: 25%;
+      &:last-child {
+        border-right:none;
+      }
+    }
+    
+    a {
+      color :$topcolor;
+      font-size :0.75rem;
+      text-decoration :none;
+      text-transform :uppercase;
+      padding: 0 0.75rem; 
+      
+      &:hover,
+      &.active {
+        color : $topactivecolor;
+        /* border-bottom: 1px solid; */
+      }
+    }
+    
+      %arrow {
+        line-height:1em; 
+        font-size:6px; 
+        padding-left:6px; 
+        position:relative;
+        top:-2px;
+      }
+    
+    /* Change this in order to change the Dropdown symbol */
+    .sub-menu li > a:after { 
+      @extend %arrow;
+      content: ' \25B6'; 
+      
+    } 
+    
+    li > a:after { 
+      @extend %arrow;
+      content: ' \25BC'; 
+  
+    } 
+    li > a:only-child:after,
+    .sub-menu li > a:only-child:after { 
+      content: ''; 
+    }
+    
+     // Drop Down Menus
+    .sub-menu {
+      background:$subbg;
+      padding :$subPadding;
+      li {
+        border-right:none;
+      }
+      a {
+        color:$sublink;
+        /* padding: 0.35rem ($menuHeight / 2); */
+        &:hover {
+          background: $sublinkactivebg;
+          border-bottom: none;
+        }
+      }
+      &:before {
+        content : '';
+        border-bottom: 14px solid $subbg;
+        border-right:14px solid transparent;
+        position : absolute;
+        top: -14px;
+        left: 0;
+      }
+  
+      // Nested Drop Down Menus
+      .sub-menu {
+          background : $nestedbg;
+          &:before {
+            content : ' ';
+            border-right: 14px solid $nestedbg;
+            border-bottom:14px solid transparent;
+            position : absolute;
+            top: 0;
+            left: -14px;  
+          }
+  
+        li a:hover,
+        li a:active {
+            background: $subbg;
+          }
+      }
+  
+    } // end sub-menus
+    
+    .active,
+    .current_page_item a,
+    .current-menu-item a {
+      color : $currentcolor;
+    }
+    
+  }
+  
+  
+  
+  
+  /* DEMO PAGE STYLE */
+  html{
+      padding:40px;
+      background:#ECF0F1;
+  }
+  
+  h1 {
+      color : #2c3e50;
+      text-transform:uppercase; 
+      text-align:center;
+      font-size:14px;
+      line-height:21px;
+      letter-spacing:10px;
+      margin: 48px auto 0;
+  }
+  
+  
+  h1+p {
+      font-size:14px;
+      font-family:serif;
+      font-style:italic;
+      color: #b5bfc1;
+      text-align:center;
+      border-top:1px dotted #ccc;
+      width:360px;
+      padding: 12px;
+      margin:12px auto 48px;
+  }
+  
+  
+  

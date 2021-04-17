@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block pagestyles %}
+  <link href="{{ url_for('static', filename='/css/basic.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+  <div class="form-wrapper">
+
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1>Sign Up</h1>
+
+    <form method="POST" action="/signup">
+      {{ form.csrf_token }}
+
+      <fieldset class="name">
+        {{ form.fname.label }}
+        {{ form.fname(placeholder='John') }}
+        {% if form.fname.errors %}
+          <ul class="errors">
+            {% for error in form.fname.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="name">
+        {{ form.lname.label }}
+        {{ form.lname(placeholder='Doe') }}
+        {% if form.lname.errors %}
+          <ul class="errors">
+            {% for error in form.lname.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      
+      <fieldset class="roll">
+        {{ form.roll.label }}
+        {{ form.roll(placeholder='181100') }}
+        {% if form.roll.errors %}
+          <ul class="errors">
+            {% for error in form.roll.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      
+      <fieldset class="year">
+        {{ form.year.label }}
+        {{ form.year(placeholder='Doe') }}
+        {% if form.year.errors %}
+          <ul class="errors">
+            {% for error in form.year.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      
+      <fieldset class="branch">
+        {{ form.branch.label }}
+        {{ form.branch(placeholder='Computer Engineering') }}
+        {% if form.branch.errors %}
+          <ul class="errors">
+            {% for error in form.branch.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      
+      <fieldset class="division">
+        {{ form.division.label }}
+        {{ form.division }}
+        {% if form.division.errors %}
+          <ul class="errors">
+            {% for error in form.division.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>    
+
+      <fieldset class="email">
+        {{ form.id.label }}
+        {{ form.id(placeholder='youremail@example.com') }}
+        {% if form.id.errors %}
+          <ul class="errors">
+            {% for error in form.id.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <fieldset class="password">
+        {{ form.password.label }}
+        {{ form.password }}
+        {% if form.password.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+      
+      
+
+      <fieldset class="confirm">
+        {{ form.confirm.label }}
+        {{ form.confirm }}
+        {% if form.confirm.errors %}
+          <ul class="errors">
+            {% for error in form.confirm.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
+
+      <div class="submit-button">
+        {{ form.submit }}
+      </div>
+
+    </form>
+
+    <div class="login-signup">
+      <span>Already have an account? <a href="{{ url_for('logview') }}">Log in.</a></span>
+    </div>
+  </div>
+{% endblock %}

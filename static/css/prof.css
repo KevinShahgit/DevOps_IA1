@@ -1,0 +1,166 @@
+@import url("//fonts.googleapis.com/css?family=Maven+Pro");
+
+.wrap-drop {
+background:#e7ded5;
+box-shadow:3px 3px 3px rgba(0,0,0,.2);
+cursor:pointer;
+margin:0 auto;
+max-width:225px;
+padding:1rem;
+position:relative;
+width:75%;
+z-index:3;
+}
+
+th#dt{
+  font-weight: 700;  
+  max-width: 100%;
+  margin-bottom: .5rem;
+  width: 30px !important;
+}
+
+th{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 2px;
+  width: 250px;
+}
+
+legend {
+  display: block;
+  padding-inline-start: 1px;
+  padding-inline-end: 1px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  text-align: center;
+  font-size: 20px;
+  width: auto;
+}
+
+#subject, #year, #division, #branch{
+  text-align: center;
+  font-size: 16px;
+  width: 130px;
+  opacity: 0.5;
+  background: black;
+  border-width: thin;
+  border-color: darkgray;
+  color: black;
+  background: transparent;
+  font-weight: bold;
+}
+
+#date{
+  text-align: center;
+  font-size: 16px;
+  width: 130px;
+  opacity: 0.95;
+  background: black;
+  border-width: thin;
+  border-color: darkgray;
+  color: black;
+  background: transparent;
+  font-weight: bold;
+}
+
+#subject:hover, #year:hover, #division:hover, #branch:hover, #date:hover{
+  opacity: 0.95;
+}
+
+fieldset {
+  display: block;
+  margin-inline-start: 1px;
+  margin-inline-end: 1px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+  border-width: 2px;
+  border-style: groove;
+  border-color: threedface;
+  border-image: initial;
+}
+
+td{
+  text-align: center;
+  font-size: 17px;
+  padding: 5px;
+  width: 250px;
+}
+
+.wrap-drop::after {
+border-color:#695d52 transparent;
+border-style:solid;
+border-width:10px 10px 0;
+content:"";
+height:0;
+margin-top:-4px;
+position:absolute;
+right:1rem;
+top:50%;
+width:0;
+}
+
+.wrap-drop .drop {
+background:#e7ded5;
+box-shadow:3px 3px 3px rgba(0,0,0,.2);
+display:none;
+left:0;
+list-style:none;
+margin-top:0;
+opacity:0;
+padding-left:0;
+pointer-events:none;
+position:absolute;
+right:0;
+top:100%;
+z-index:2;
+}
+
+input[type=submit]{
+  padding: 8px;
+  margin: 10px;
+  text-align: center;
+  border-width: 1px;
+  border-color: black;
+  background-color: transparent;
+  color: black;
+  opacity: 0.6;
+}
+
+input[type=submit]:hover{
+  opacity: 0.95;
+  font-weight: bolder;
+}
+
+
+
+.wrap-drop .drop li a {
+color:#695d52;
+display:block;
+padding:1rem;
+text-decoration:none;
+}
+
+.wrap-drop span {
+color:#928579;
+}
+
+.wrap-drop .drop li:hover a {
+background-color:#695d52;
+color:#e7ded5;
+}
+
+.wrap-drop.active::after {
+border-width:0 10px 10px;
+}
+
+.wrap-drop.active .drop {
+display:block;
+opacity:1;
+pointer-events:auto;
+}
