@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         dockerImage = ''
-        registry = 'kevinshah/devopsIA1'
+        registry = 'kevinshah/devops_ia1'
         registryCredential = 'docker'
     }
     stages{
@@ -30,7 +30,7 @@ pipeline{
         stage('Docker Run') {
         steps{
             script {
-                dockerImage.run("-p 8096:5000 --rm --name devopsIA1")
+                dockerImage.run("-p 8096:5000 --rm --name devops_ia")
             }
         }
     }
