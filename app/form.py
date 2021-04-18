@@ -41,6 +41,8 @@ class Feedback(FlaskForm):
     message = TextAreaField('Feedback message', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+    
+
 class Notify(FlaskForm):
     name = SelectField('Select student', choices=[], coerce=str)
     subject = StringField('Subject of email(notification)', validators=[DataRequired()])
