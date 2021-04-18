@@ -127,7 +127,7 @@ body {
 .login-page .form-wrapper input {
     padding: 10px 13px;
     margin-bottom: 15px;
-    width: -webkit-fill-available;
+    width: 75%;
     border-radius: 2px;
     border: 1px solid #d4d9e3;
     font-weight: 400;
