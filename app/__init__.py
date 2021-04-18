@@ -17,4 +17,5 @@ stu = db["student"]
 misc = db["miscellaneous"]
 teach = db["teacher"]
 
+
 from app import routes
